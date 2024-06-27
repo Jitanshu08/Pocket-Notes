@@ -1,0 +1,80 @@
+/* index.css */
+
+/* Reset all default margins, paddings, and borders */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+/* Set base font settings for the document */
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* Ensure consistent rendering of main HTML5 elements */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+  display: block;
+}
+
+/* Reset list styling */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Reset links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset table settings */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Ensure form elements inherit font settings */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+
+/* Set a basic box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Clearfix for floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Reset images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
