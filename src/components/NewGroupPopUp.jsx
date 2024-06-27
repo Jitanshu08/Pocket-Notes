@@ -21,7 +21,7 @@ function NewGroupPopup({ addGroup, closePopup }) {
   return (
     <div className="new-group-popup" onClick={closePopup}>
       <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-        <h3>Create New Group</h3>
+        <h3>Create New Notes group</h3>
         <input
           type="text"
           value={groupName}

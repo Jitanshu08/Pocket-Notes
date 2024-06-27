@@ -44,7 +44,7 @@ function App() {
     <div className="app">
       <div className="sidebar">
         <h1>Pocket Notes</h1>
-        <button onClick={() => setShowPopup(true)}> + Create New Group</button>
+        <button onClick={() => setShowPopup(true)}> + Create Notes group</button>
         {showPopup && (
           <NewGroupPopup
             addGroup={addGroup}
@@ -58,10 +58,12 @@ function App() {
           <NoteList group={selectedGroup} addNote={addNote} />
         ) : (
           <div className="placeholder">
+            <h1>Pocket Notes</h1>
             <p>
               Send and receive messages without keeping your phone online. Use
               Pocket Notes on up to 4 linked devices and 1 mobile phone.
             </p>
+            <p>end-to-end encrypted</p>
           </div>
         )}
       </div>

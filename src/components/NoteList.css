@@ -12,6 +12,10 @@
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  min-width: 1000px;
+  max-width: 1000px;
+  min-height: 211px;
+  max-height: 211px;
 }
 
 .add-note-btn {
