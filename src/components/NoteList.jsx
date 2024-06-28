@@ -19,7 +19,21 @@ function NoteList({ group, addNote }) {
 
   return (
     <div className="note-list">
-      <h2>{group.name}</h2>
+      <div className="group-header">
+        <h2 className="group-name">{group.name}</h2>
+      </div>
+      <div className="notes-container">
+        <ul>
+          {group.notes.map((note) => (
+            <li key={note.id}>
+              {note.text} <br />
+              <small>Created: {note.createdAt}</small>
+              <br />
+              <small>Updated: {note.updatedAt}</small>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="note-input-container">
         <textarea
           value={noteText}
@@ -34,16 +48,6 @@ function NoteList({ group, addNote }) {
           Add Note
         </button>
       </div>
-      <ul>
-        {group.notes.map((note) => (
-          <li key={note.id}>
-            {note.text} <br />
-            <small>Created: {note.createdAt}</small>
-            <br />
-            <small>Updated: {note.updatedAt}</small>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

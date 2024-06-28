@@ -1,7 +1,8 @@
-/* GroupList.css */
-
 .group-list {
+  flex: 1; /* Ensure it takes up available space */
+  overflow-y: auto; /* Add scrollbar to the group list */
   margin-top: 20px;
+  max-height: calc(100vh - 60px); /* Adjust according to your header height */
 }
 
 .group-list div {

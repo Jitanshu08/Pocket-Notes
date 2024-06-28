@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import "./NewGroupPopUp.css";
 
-function NewGroupPopup({ addGroup, closePopup }) {
+function NewGroupPopup({ addGroup, closePopup, groups }) {
   const [groupName, setGroupName] = useState("");
+  const [errMessage, setErrMessage] = useState("");
 
   const handleAddGroup = () => {
     if (groupName.trim()) {
-      addGroup(groupName);
-      setGroupName("");
-      closePopup();
+      const isUnique = !groups.some((group) => group.name === groupName.trim());
+      if (isUnique) {
+        addGroup(groupName);
+        setGroupName("");
+        setErrMessage("");
+        closePopup();
+      } else {
+        setErrMessage("Group name must be unique.");
+      }
     }
   };
 
@@ -28,6 +35,7 @@ function NewGroupPopup({ addGroup, closePopup }) {
           onChange={(e) => setGroupName(e.target.value)}
           onKeyPress={handleKeyPress}
         />
+        {errMessage && <p className="err-message">{errMessage}</p>}
         <button className="create-btn" onClick={handleAddGroup}>
           Create
         </button>

@@ -16,7 +16,7 @@
   background: white;
   padding: 20px;
   border-radius: 5px;
-  width: 300px;
+
   text-align: center;
 }
 
@@ -56,4 +56,9 @@
 
 .popup-content .cancel-btn:hover {
   background-color: #c82333;
+}
+
+.err-message {
+  color: red;
+  margin-bottom: 10px;
 }

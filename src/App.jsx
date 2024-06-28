@@ -16,8 +16,13 @@ function App() {
   }, [groups]);
 
   const addGroup = (groupName) => {
-    const newGroup = { id: Date.now(), name: groupName, notes: [] };
-    setGroups([...groups, newGroup]);
+    const isUnique = !groups.some((group) => group.name === groupName);
+    if (isUnique) {
+      const newGroup = { id: Date.now(), name: groupName, notes: [] };
+      setGroups([...groups, newGroup]);
+    } else {
+      alert("Group name must be unique. Please choose a different name.");
+    }
   };
 
   const addNote = (groupId, noteText) => {
@@ -43,15 +48,18 @@ function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <h1>Pocket Notes</h1>
-        <button onClick={() => setShowPopup(true)}> + Create Notes group</button>
-        {showPopup && (
-          <NewGroupPopup
-            addGroup={addGroup}
-            closePopup={() => setShowPopup(false)}
-          />
-        )}
-        <GroupList groups={groups} selectGroup={selectGroup} />
+        <div className="sidebar-header">
+          <h1 style={{ font: "31.52px" }}>Pocket Notes</h1>
+        </div>
+        <div className="sidebar-content">
+          <GroupList groups={groups} selectGroup={selectGroup} />
+        </div>
+        <button
+          className="create-new-grp-btn"
+          onClick={() => setShowPopup(true)}
+        >
+          +
+        </button>
       </div>
       <div className="main-content">
         {selectedGroup ? (
@@ -67,6 +75,13 @@ function App() {
           </div>
         )}
       </div>
+      {showPopup && (
+        <NewGroupPopup
+          addGroup={addGroup}
+          closePopup={() => setShowPopup(false)}
+          groups={groups} // Pass groups here
+        />
+      )}
     </div>
   );
 }
