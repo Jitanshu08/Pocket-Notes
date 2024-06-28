@@ -56,6 +56,7 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  width: fit-content;
 }
 
 .add-note-btn.inactive {
