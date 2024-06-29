@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./NoteList.css";
+import sendIconInactive from "../assets/icons8-send-24.png";
+import sendIconActive from "../assets/icons8-sent-24.png";
 
 function NoteList({ group, addNote }) {
   const [noteText, setNoteText] = useState("");
@@ -42,10 +44,14 @@ function NoteList({ group, addNote }) {
           placeholder="Enter your note..."
         />
         <button
-          className={`add-note-btn ${noteText.trim() ? "active" : "inactive"}`}
+          className="add-note-btn"
           onClick={handleAddNote}
+          disabled={!noteText.trim()}
         >
-          Add Note
+          <img
+            src={noteText.trim() ? sendIconActive : sendIconInactive}
+            alt="Send"
+          />
         </button>
       </div>
     </div>

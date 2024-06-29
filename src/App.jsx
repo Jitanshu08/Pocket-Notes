@@ -3,6 +3,7 @@ import GroupList from "./components/GroupList";
 import NoteList from "./components/NoteList";
 import NewGroupPopup from "./components/NewGroupPopUp";
 import "./App.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const [groups, setGroups] = useState(
@@ -79,7 +80,7 @@ function App() {
         <NewGroupPopup
           addGroup={addGroup}
           closePopup={() => setShowPopup(false)}
-          groups={groups} // Pass groups here
+          groups={groups}
         />
       )}
     </div>

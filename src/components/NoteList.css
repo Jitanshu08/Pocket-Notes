@@ -14,6 +14,7 @@
   flex: 1;
   overflow-y: auto;
   padding: 10px;
+  max-height: 56%;
 }
 
 .note-input-container {
@@ -21,51 +22,43 @@
   padding: 10px;
   background: #fff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
 }
 
 .note-input-container textarea {
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
   max-height: 100px;
   min-height: 100px;
-  max-width: 974px;
-  min-width: 100%;
   width: 100%;
-  resize: none; /* Prevent resizing */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-/* Ensure textarea resizes appropriately */
-@media (max-width: 974px) {
-  .note-input-container textarea {
-    width: 100%;
-  }
-}
-
-.group-name {
-  font-size: 24px;
+  resize: none;
+  box-sizing: border-box;
+  flex: 1; /* Allow textarea to take available space */
 }
 
 .add-note-btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  padding: 10px;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  width: fit-content;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
 }
 
-.add-note-btn.inactive {
-  background-color: #ccc;
+.add-note-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.add-note-btn:disabled {
   cursor: not-allowed;
-}
-
-.add-note-btn.active:hover {
-  background-color: #0056b3;
 }
 
 ul {
