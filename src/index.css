@@ -16,6 +16,7 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-size: 16px;
+  overflow-y: hidden;
 }
 
 /* Ensure consistent rendering of main HTML5 elements */
