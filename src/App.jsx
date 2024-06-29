@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GroupList from "./components/GroupList";
 import NoteList from "./components/NoteList";
-import NewGroupPopup from "./components/NewGroupPopUp";
+import NewGroupPopUp from "./components/NewGroupPopUp";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -16,10 +16,10 @@ function App() {
     localStorage.setItem("groups", JSON.stringify(groups));
   }, [groups]);
 
-  const addGroup = (groupName) => {
+  const addGroup = (groupName, color) => {
     const isUnique = !groups.some((group) => group.name === groupName);
     if (isUnique) {
-      const newGroup = { id: Date.now(), name: groupName, notes: [] };
+      const newGroup = { id: Date.now(), name: groupName, color, notes: [] };
       setGroups([...groups, newGroup]);
     } else {
       alert("Group name must be unique. Please choose a different name.");
@@ -77,7 +77,7 @@ function App() {
         )}
       </div>
       {showPopup && (
-        <NewGroupPopup
+        <NewGroupPopUp
           addGroup={addGroup}
           closePopup={() => setShowPopup(false)}
           groups={groups}

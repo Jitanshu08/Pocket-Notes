@@ -16,7 +16,6 @@
   background: white;
   padding: 20px;
   border-radius: 5px;
-
   text-align: center;
 }
 
@@ -61,4 +60,33 @@
 .err-message {
   color: red;
   margin-bottom: 10px;
+}
+
+/* Color selection styles */
+.color-selection {
+  margin: 10px 0;
+}
+
+.color-selection label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.color-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.color-circle.selected {
+  transform: scale(1.2);
+  border: 2px solid #000;
 }

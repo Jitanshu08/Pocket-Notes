@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import "./NewGroupPopUp.css";
 
-function NewGroupPopup({ addGroup, closePopup, groups }) {
+const colors = [
+  "rgba(179, 139, 250, 1)",
+  "rgba(255, 121, 242, 1)",
+  "rgba(67, 230, 252, 1)",
+  "rgba(241, 149, 118, 1)",
+  "rgba(0, 71, 255, 1)",
+  "rgba(102, 145, 255, 1)",
+];
+
+function NewGroupPopUp({ addGroup, closePopup, groups }) {
   const [groupName, setGroupName] = useState("");
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [errMessage, setErrMessage] = useState("");
 
   const handleAddGroup = () => {
     if (groupName.trim()) {
       const isUnique = !groups.some((group) => group.name === groupName.trim());
       if (isUnique) {
-        addGroup(groupName);
+        addGroup(groupName, selectedColor);
         setGroupName("");
         setErrMessage("");
         closePopup();
@@ -36,6 +46,21 @@ function NewGroupPopup({ addGroup, closePopup, groups }) {
           onKeyPress={handleKeyPress}
         />
         {errMessage && <p className="err-message">{errMessage}</p>}
+        <div className="color-selection">
+          <label>Choose a Color:</label>
+          <div className="color-options">
+            {colors.map((color, index) => (
+              <div
+                key={index}
+                className={`color-circle ${
+                  selectedColor === color ? "selected" : ""
+                }`}
+                style={{ backgroundColor: color }}
+                onClick={() => setSelectedColor(color)}
+              />
+            ))}
+          </div>
+        </div>
         <button className="create-btn" onClick={handleAddGroup}>
           Create
         </button>
@@ -47,4 +72,4 @@ function NewGroupPopup({ addGroup, closePopup, groups }) {
   );
 }
 
-export default NewGroupPopup;
+export default NewGroupPopUp;

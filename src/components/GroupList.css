@@ -1,8 +1,26 @@
 .group-list {
-  flex: 1; /* Ensure it takes up available space */
-  overflow-y: auto; /* Add scrollbar to the group list */
+  flex: 1;
+  overflow-y: auto;
   margin-top: 20px;
-  max-height: calc(100vh - 60px); /* Adjust according to your header height */
+  max-height: calc(100vh - 60px);
+}
+
+.group-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.group-list::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.group-list::-webkit-scrollbar-thumb:hover {
+  background-color: grey;
+}
+
+.group-list::-webkit-scrollbar-track {
+  background: #f4f4f4;
+  border-radius: 10px;
 }
 
 .group-list div {
@@ -13,8 +31,22 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .group-list div:hover {
   background-color: #e9ecef;
+}
+
+.group-symbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-weight: bold;
+  color: white;
 }
