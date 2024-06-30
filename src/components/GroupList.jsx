@@ -1,7 +1,7 @@
 import React from "react";
 import "./GroupList.css";
 
-function GroupList({ groups, selectGroup }) {
+function GroupList({ groups, selectGroup, selectedGroupId }) {
   const getGroupSymbol = (name) => {
     const words = name.split(" ");
     if (words.length === 1) {
@@ -15,10 +15,19 @@ function GroupList({ groups, selectGroup }) {
 
   return (
     <div className="group-list">
-      {groups.map((group, index) => (
-        <div key={index} onClick={() => selectGroup(group.id)}>
-          <span className="group-symbol" style={{ backgroundColor: group.color }}>
-            {getGroupSymbol(group.name)}
+      {groups.map((group) => (
+        <div
+          key={group.id}
+          className={`group-item ${
+            selectedGroupId === group.id ? "active" : ""
+          }`}
+          onClick={() => selectGroup(group.id)}
+        >
+          <span
+            className="group-symbol"
+            style={{ backgroundColor: group.color }}
+          >
+            {group.name.slice(0, 2).toUpperCase()}
           </span>
           {group.name}
         </div>

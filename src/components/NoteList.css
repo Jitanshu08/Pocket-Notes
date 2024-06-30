@@ -7,9 +7,9 @@
 .group-header {
   display: flex;
   align-items: center;
-  background: rgba(232, 232, 232, 1);
+  background: #0019a4;
   padding: 16px;
-  border-bottom: 1px solid #ddd;
+  color: #fff;
 }
 
 .group-symbol {
@@ -28,7 +28,8 @@
   flex: 1;
   overflow-y: auto;
   padding: 10px;
-  max-height: 35%;
+  max-height: 56vh;
+  min-height: 56vh;
 }
 
 .notes-container::-webkit-scrollbar {
@@ -50,9 +51,9 @@
 }
 
 .note-input-container {
-  border-top: 1px solid #ddd;
-  padding: 10px;
-  background: #fff;
+  padding: 20px;
+  padding-bottom: 40px;
+  background: #0019a4;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -62,9 +63,9 @@
 .note-input-container textarea {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ddd;
-  max-height: 100px;
-  min-height: 100px;
+  border: 1px solid #ffffff;
+  max-height: 180px;
+  min-height: 180px;
   width: 100%;
   resize: none;
   box-sizing: border-box;
@@ -76,8 +77,8 @@
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 22px;
+  bottom: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,10 +93,15 @@
   height: 24px;
 }
 
-.add-note-btn:disabled {
-  cursor: not-allowed;
+.add-note-btn img.inactive {
+  opacity: 0.5;
 }
 
+.add-note-btn img.active {
+  opacity: 1;
+}
+
+.add-note-btn:disabled,
 .add-note-btn:hover,
 .add-note-btn:focus,
 .add-note-btn:active {
@@ -111,11 +117,21 @@ ul {
 }
 
 ul li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-ul li small {
-  display: block;
-  color: #888;
+.note-content {
+  margin-bottom: 5px;
+}
+
+.note-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: black;
 }

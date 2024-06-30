@@ -4,6 +4,8 @@ import NoteList from "./components/NoteList";
 import NewGroupPopUp from "./components/NewGroupPopUp";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import pocketNotesImage from "./assets/image-pocketnotes.png";
+import lock from "./assets/lock.svg";
 
 function App() {
   const [groups, setGroups] = useState(
@@ -17,13 +19,8 @@ function App() {
   }, [groups]);
 
   const addGroup = (groupName, color) => {
-    const isUnique = !groups.some((group) => group.name === groupName);
-    if (isUnique) {
-      const newGroup = { id: Date.now(), name: groupName, color, notes: [] };
-      setGroups([...groups, newGroup]);
-    } else {
-      alert("Group name must be unique. Please choose a different name.");
-    }
+    const newGroup = { id: Date.now(), name: groupName, color, notes: [] };
+    setGroups([...groups, newGroup]);
   };
 
   const addNote = (groupId, noteText) => {
@@ -53,7 +50,11 @@ function App() {
           <h1 style={{ font: "31.52px" }}>Pocket Notes</h1>
         </div>
         <div className="sidebar-content">
-          <GroupList groups={groups} selectGroup={selectGroup} />
+          <GroupList
+            groups={groups}
+            selectGroup={selectGroup}
+            selectedGroupId={selectedGroup ? selectedGroup.id : null}
+          />
         </div>
         <button
           className="create-new-grp-btn"
@@ -67,12 +68,25 @@ function App() {
           <NoteList group={selectedGroup} addNote={addNote} />
         ) : (
           <div className="placeholder">
+            <img src={pocketNotesImage} alt="Pocket Notes" />
             <h1>Pocket Notes</h1>
             <p>
               Send and receive messages without keeping your phone online. Use
               Pocket Notes on up to 4 linked devices and 1 mobile phone.
             </p>
-            <p>end-to-end encrypted</p>
+            <p>
+              <img
+                src={lock}
+                alt="encryption"
+                style={{
+                  height: "16px",
+                  width: "16px",
+                  marginRight: "5px",
+                  marginTop: "16px",
+                }}
+              />
+              end-to-end encrypted
+            </p>
           </div>
         )}
       </div>

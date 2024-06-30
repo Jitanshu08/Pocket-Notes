@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./NoteList.css";
-import sendIconInactive from "../assets/icons8-send-24.png";
-import sendIconActive from "../assets/icons8-sent-24.png";
+import sendIcon from "../assets/icons8-sent-24.png";
 
 function NoteList({ group, addNote }) {
   const [noteText, setNoteText] = useState("");
@@ -28,6 +27,19 @@ function NoteList({ group, addNote }) {
     }
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "short" });
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${day} ${month} ${year} \u2022 ${formattedHours}:${formattedMinutes} ${ampm}`;
+  };
+
   return (
     <div className="note-list">
       <div className="group-header">
@@ -40,10 +52,8 @@ function NoteList({ group, addNote }) {
         <ul>
           {group.notes.map((note) => (
             <li key={note.id}>
-              {note.text} <br />
-              <small>Created: {note.createdAt}</small>
-              <br />
-              <small>Updated: {note.updatedAt}</small>
+              <div className="note-content">{note.text}</div>
+              <small className="note-date">{formatDate(note.createdAt)}</small>
             </li>
           ))}
         </ul>
@@ -53,7 +63,7 @@ function NoteList({ group, addNote }) {
           value={noteText}
           onChange={(e) => setNoteText(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Enter your text here..........."
+          placeholder="Enter your text here..."
         />
         <button
           className="add-note-btn"
@@ -61,8 +71,9 @@ function NoteList({ group, addNote }) {
           disabled={!noteText.trim()}
         >
           <img
-            src={noteText.trim() ? sendIconActive : sendIconInactive}
+            src={sendIcon}
             alt="Send"
+            className={noteText.trim() ? "active" : "inactive"}
           />
         </button>
       </div>
