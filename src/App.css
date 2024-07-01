@@ -1,3 +1,4 @@
+/* App.css */
 .app {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -138,4 +139,15 @@ button:hover {
 .sidebar-content::-webkit-scrollbar-track,
 .notes-container::-webkit-scrollbar-track {
   background: #f4f4f4;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .main-content {
+    display: none; /* Hide the placeholder content for mobile */
+  }
+
+  .main-content.active {
+    display: flex; /* Show the note list for mobile */
+  }
 }

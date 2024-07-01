@@ -2,10 +2,8 @@
   flex: 1;
   overflow-y: auto;
   margin-top: 20px;
-  max-height: calc(
-    100vh - 100px
-  ); /* Adjusted to ensure it fills available space */
-  padding-bottom: 80px; /* Ensure space for the sticky button */
+  max-height: calc(100vh - 100px);
+  padding-bottom: 80px;
 }
 
 .group-list::-webkit-scrollbar {
