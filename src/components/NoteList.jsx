@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NoteList.css";
 import sendIcon from "../assets/icons8-sent-24.png";
 
-function NoteList({ group, addNote }) {
+function NoteList({ group, addNote, goBack }) {
   const [noteText, setNoteText] = useState("");
+  const [groupSymbol, setGroupSymbol] = useState("");
+
+  useEffect(() => {
+    const storedSymbols =
+      JSON.parse(localStorage.getItem("groupSymbols")) || {};
+    setGroupSymbol(storedSymbols[group.id]);
+  }, [group.id]);
 
   const handleAddNote = () => {
     if (noteText.trim()) {
@@ -15,15 +22,6 @@ function NoteList({ group, addNote }) {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleAddNote();
-    }
-  };
-
-  const getGroupSymbol = (name) => {
-    const words = name.split(" ");
-    if (words.length > 1) {
-      return words[0][0].toUpperCase() + words[1][0].toUpperCase();
-    } else {
-      return name[0].toUpperCase();
     }
   };
 
@@ -43,8 +41,11 @@ function NoteList({ group, addNote }) {
   return (
     <div className="note-list">
       <div className="group-header">
+        <button className="back-button" onClick={goBack}>
+          <i class="fa-solid fa-arrow-left-long"></i>
+        </button>
         <div className="group-symbol" style={{ backgroundColor: group.color }}>
-          {getGroupSymbol(group.name)}
+          {groupSymbol}
         </div>
         <h2 className="group-name">{group.name}</h2>
       </div>

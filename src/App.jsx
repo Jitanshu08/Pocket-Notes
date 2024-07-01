@@ -43,6 +43,10 @@ function App() {
     setSelectedGroup(groups.find((group) => groupId === group.id));
   };
 
+  const goBack = () => {
+    setSelectedGroup(null);
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
@@ -63,9 +67,9 @@ function App() {
           +
         </button>
       </div>
-      <div className="main-content">
+      <div className={`main-content ${selectedGroup ? "active" : ""}`}>
         {selectedGroup ? (
-          <NoteList group={selectedGroup} addNote={addNote} />
+          <NoteList group={selectedGroup} addNote={addNote} goBack={goBack} />
         ) : (
           <div className="placeholder">
             <img src={pocketNotesImage} alt="Pocket Notes" />
@@ -82,7 +86,7 @@ function App() {
                   height: "16px",
                   width: "16px",
                   marginRight: "5px",
-                  marginTop: "16px",
+                  marginTop: "17px",
                 }}
               />
               end-to-end encrypted

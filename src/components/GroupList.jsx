@@ -1,17 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./GroupList.css";
 
 function GroupList({ groups, selectGroup, selectedGroupId }) {
-  const getGroupSymbol = (name) => {
+  const generateSymbol = (name) => {
     const words = name.split(" ");
     if (words.length === 1) {
-      const randomIndex = Math.floor(Math.random() * name.length);
-      const randomLetter = name[randomIndex].toUpperCase();
-      return randomLetter;
+      return name[Math.floor(Math.random() * name.length)].toUpperCase();
     } else {
-      return words[0][0].toUpperCase() + words[1][0].toUpperCase();
+      const randomWord1Index = Math.floor(Math.random() * words.length);
+      let randomWord2Index;
+      do {
+        randomWord2Index = Math.floor(Math.random() * words.length);
+      } while (randomWord1Index === randomWord2Index);
+
+      const randomLetter1Index = Math.floor(
+        Math.random() * words[randomWord1Index].length
+      );
+      const randomLetter2Index = Math.floor(
+        Math.random() * words[randomWord2Index].length
+      );
+
+      const randomLetter1 =
+        words[randomWord1Index][randomLetter1Index]?.toUpperCase();
+      const randomLetter2 =
+        words[randomWord2Index][randomLetter2Index]?.toUpperCase();
+
+      if (!randomLetter1 || !randomLetter2) {
+        return "";
+      }
+
+      return randomLetter1 + randomLetter2;
     }
   };
+
+  const [groupSymbols, setGroupSymbols] = useState({});
+
+  useEffect(() => {
+    const storedSymbols =
+      JSON.parse(localStorage.getItem("groupSymbols")) || {};
+    const symbols = { ...storedSymbols };
+
+    groups.forEach((group) => {
+      if (!symbols[group.id]) {
+        symbols[group.id] = generateSymbol(group.name);
+      }
+    });
+
+    setGroupSymbols(symbols);
+    localStorage.setItem("groupSymbols", JSON.stringify(symbols));
+  }, [groups]);
 
   return (
     <div className="group-list">
@@ -27,7 +64,7 @@ function GroupList({ groups, selectGroup, selectedGroupId }) {
             className="group-symbol"
             style={{ backgroundColor: group.color }}
           >
-            {group.name.slice(0, 2).toUpperCase()}
+            {groupSymbols[group.id]}{" "}
           </span>
           {group.name}
         </div>
