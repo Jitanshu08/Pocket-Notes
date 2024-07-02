@@ -149,8 +149,8 @@ ul li {
 
 @media (max-width: 768px) {
   .notes-container {
-    max-height: calc(100vh - 340px);
-    min-height: calc(100vh - 340px);
+    max-height: calc(100vh - 364px);
+    min-height: calc(100vh - 364px);
   }
 
   .back-button {
