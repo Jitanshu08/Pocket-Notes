@@ -109,3 +109,33 @@
 .cancel-btn:hover {
   background-color: #c82333;
 }
+
+@media (max-width: 768px) {
+  .popup-content {
+    padding: 15px;
+  }
+
+  .popup-content h3 {
+    font-size: 24px;
+  }
+
+  .input-group label {
+    font-size: 22px;
+    margin-right: 15px;
+  }
+
+  .popup-content input {
+    font-size: 14px;
+  }
+
+  .color-selection label {
+    font-size: 22px;
+    margin-right: 15px;
+  }
+
+  .create-btn,
+  .cancel-btn {
+    width: 130px;
+    font-size: 14px;
+  }
+}
