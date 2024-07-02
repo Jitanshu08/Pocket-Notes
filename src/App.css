@@ -17,7 +17,7 @@
   top: 0;
   background-color: #ffffff;
   z-index: 0;
-  padding: 50px 15px 15px 20px;
+  padding: 35px 15px 0px 20px;
   text-align: center;
 }
 
@@ -39,8 +39,8 @@
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
-  font-size: 24px; 
-  font-weight: 500; 
+  font-size: 24px;
+  font-weight: 500;
   display: flex;
   align-items: center;
 }
@@ -131,8 +131,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 68.9px; /* Increased width */
-  height: 68.9px; /* Increased height */
+  width: 68.9px;
+  height: 68.9px;
   border-radius: 50%;
   margin-right: 10px;
   font-weight: 500;

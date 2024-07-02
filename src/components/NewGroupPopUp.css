@@ -1,4 +1,4 @@
-/* NewGroupPopup.css */
+/* NewGroupPopUp.css */
 
 .new-group-popup {
   position: fixed;
@@ -16,45 +16,37 @@
   background: white;
   padding: 20px;
   border-radius: 5px;
-  text-align: center;
+  max-width: 580px;
+  width: 100%;
+  max-height: 218px;
+  min-height: 218px;
 }
 
 .popup-content h3 {
   margin-bottom: 15px;
+  font-size: 29px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  font-size: 27px;
+  font-weight: 500;
+  margin-right: 20px;
 }
 
 .popup-content input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 10px;
+  flex-grow: 1;
+  padding: 10px 10px 10px 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.popup-content button {
-  margin: 5px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.popup-content .create-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.popup-content .create-btn:hover {
-  background-color: #0056b3;
-}
-
-.popup-content .cancel-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
-.popup-content .cancel-btn:hover {
-  background-color: #c82333;
+  border-radius: 20px;
+  font-size: 16px;
 }
 
 .err-message {
@@ -62,19 +54,20 @@
   margin-bottom: 10px;
 }
 
-/* Color selection styles */
 .color-selection {
+  display: flex;
+  align-items: center;
   margin: 10px 0;
 }
 
 .color-selection label {
-  display: block;
-  margin-bottom: 5px;
+  font-size: 27px;
+  font-weight: 500;
+  margin-right: 20px;
 }
 
 .color-options {
   display: flex;
-  justify-content: center;
   gap: 10px;
 }
 
@@ -89,4 +82,30 @@
 .color-circle.selected {
   transform: scale(1.2);
   border: 2px solid #000;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.create-btn {
+  background-color: rgba(0, 31, 139, 1);
+  color: white;
+  width: 154px;
+}
+
+.create-btn:hover {
+  background-color: rgba(0, 31, 139, 0.8);
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  width: 154px;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
 }

@@ -13,7 +13,7 @@ function NoteList({ group, addNote, goBack }) {
   }, [group.id]);
 
   useEffect(() => {
-    setNoteText(""); 
+    setNoteText("");
   }, [group.notes]);
 
   const handleAddNote = () => {

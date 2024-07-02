@@ -38,16 +38,20 @@ function NewGroupPopUp({ addGroup, closePopup, groups }) {
   return (
     <div className="new-group-popup" onClick={closePopup}>
       <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-        <h3>Create New Notes group</h3>
-        <input
-          type="text"
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
+        <h3>Create New Group</h3>
+        <div className="input-group">
+          <label>Group Name </label>
+          <input
+            type="text"
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Enter group name"
+          />
+        </div>
         {errMessage && <p className="err-message">{errMessage}</p>}
         <div className="color-selection">
-          <label>Choose a Color:</label>
+          <label>Choose a Color </label>
           <div className="color-options">
             {colors.map((color, index) => (
               <div
@@ -61,12 +65,14 @@ function NewGroupPopUp({ addGroup, closePopup, groups }) {
             ))}
           </div>
         </div>
-        <button className="create-btn" onClick={handleAddGroup}>
-          Create
-        </button>
-        <button className="cancel-btn" onClick={closePopup}>
-          Cancel
-        </button>
+        <div className="button-group">
+          <button className="create-btn" onClick={handleAddGroup}>
+            Create
+          </button>
+          <button className="cancel-btn" onClick={closePopup}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
