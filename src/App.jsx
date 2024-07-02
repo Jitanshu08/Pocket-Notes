@@ -30,13 +30,13 @@ function App() {
       createdAt: new Date().toLocaleString(),
       updatedAt: new Date().toLocaleString(),
     };
-    setGroups(
-      groups.map((group) =>
-        group.id === groupId
-          ? { ...group, notes: [...group.notes, newNote] }
-          : group
-      )
+    const updatedGroups = groups.map((group) =>
+      group.id === groupId
+        ? { ...group, notes: [...group.notes, newNote] }
+        : group
     );
+    setGroups(updatedGroups);
+    setSelectedGroup(updatedGroups.find((group) => group.id === groupId));
   };
 
   const selectGroup = (groupId) => {
@@ -74,11 +74,11 @@ function App() {
           <div className="placeholder">
             <img src={pocketNotesImage} alt="Pocket Notes" />
             <h1>Pocket Notes</h1>
-            <p>
+            <p className="placeholder-text">
               Send and receive messages without keeping your phone online. Use
               Pocket Notes on up to 4 linked devices and 1 mobile phone.
             </p>
-            <p>
+            <p className="encryption-text">
               <img
                 src={lock}
                 alt="encryption"

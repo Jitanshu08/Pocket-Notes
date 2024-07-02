@@ -12,6 +12,10 @@ function NoteList({ group, addNote, goBack }) {
     setGroupSymbol(storedSymbols[group.id]);
   }, [group.id]);
 
+  useEffect(() => {
+    setNoteText(""); 
+  }, [group.notes]);
+
   const handleAddNote = () => {
     if (noteText.trim()) {
       addNote(group.id, noteText);
@@ -42,7 +46,7 @@ function NoteList({ group, addNote, goBack }) {
     <div className="note-list">
       <div className="group-header">
         <button className="back-button" onClick={goBack}>
-          <i class="fa-solid fa-arrow-left-long"></i>
+          <i className="fa-solid fa-arrow-left-long"></i>
         </button>
         <div className="group-symbol" style={{ backgroundColor: group.color }}>
           {groupSymbol}
