@@ -149,32 +149,12 @@ ul li {
 
 @media (max-width: 768px) {
   .notes-container {
-    max-height: calc(100vh - 300px); /* Adjusted height calculation */
-    min-height: calc(100vh - 300px); /* Adjusted height calculation */
+    max-height: calc(100vh - 361px);
+    min-height: calc(100vh - 361px);
   }
 
   .back-button {
     display: inline-block; /* Show on mobile devices */
     margin: 0;
-  }
-
-  .note-input-container {
-    padding: 10px; /* Adjusted padding */
-    padding-bottom: 60px; /* Adjusted padding-bottom to ensure the button is visible */
-    flex-direction: column; /* Stack textarea and button */
-  }
-
-  .note-input-container textarea {
-    max-height: 120px; /* Adjusted height for mobile */
-    min-height: 120px; /* Adjusted height for mobile */
-    margin-bottom: 10px; /* Space between textarea and button */
-  }
-
-  .add-note-btn {
-    position: relative; /* Relative positioning to stack below textarea */
-    right: auto; /* Reset right positioning */
-    bottom: auto; /* Reset bottom positioning */
-    align-self: flex-end; /* Align button to the right */
-    margin-top: 10px; /* Space above the button */
   }
 }
